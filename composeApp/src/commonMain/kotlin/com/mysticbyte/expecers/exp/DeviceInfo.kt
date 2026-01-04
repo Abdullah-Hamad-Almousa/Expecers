@@ -1,6 +1,6 @@
 package com.mysticbyte.expecers.exp
 
-expect class DeviceInfo {
+expect object DeviceInfo {
 
     val platform: String
     val model: String

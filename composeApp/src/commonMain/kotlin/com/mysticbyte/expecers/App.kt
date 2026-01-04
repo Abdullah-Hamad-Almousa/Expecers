@@ -5,18 +5,23 @@ import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.Button
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.dp
+import com.mysticbyte.expecers.exp.DeviceInfo
 
 @Composable
 fun App() {
 
-
+    var platformInfo = DeviceInfo.platform
+    var modelInfo = DeviceInfo.model
+    var osVersionInfo = DeviceInfo.osVersion
 
     Box(
         modifier = Modifier
@@ -39,13 +44,15 @@ fun App() {
                 Text("Click For A Log Message")
             }
 
-            Button(
-                onClick = {
-                    logMessage("KMP", "Log Message")
-                }
-            ){
-                Text("Click For A Log Message")
-            }
+            Text(
+                "Platform: |$platformInfo| \n model: |$modelInfo| \n OSVersion: |$osVersionInfo|",
+                modifier = Modifier
+                    .clip(
+                        RoundedCornerShape(13.dp)
+                    )
+                    .background(Color(0xFF797979))
+                    .padding(7.dp)
+            )
 
         }
 
