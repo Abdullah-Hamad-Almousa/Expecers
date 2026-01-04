@@ -14,6 +14,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.dp
+import com.mysticbyte.expecers.exp.CurrentTime
 import com.mysticbyte.expecers.exp.DeviceInfo
 
 @Composable
@@ -22,6 +23,8 @@ fun App() {
     var platformInfo = DeviceInfo.platform
     var modelInfo = DeviceInfo.model
     var osVersionInfo = DeviceInfo.osVersion
+
+    var currentTime = CurrentTime()
 
     Box(
         modifier = Modifier
@@ -46,6 +49,16 @@ fun App() {
 
             Text(
                 "Platform: |$platformInfo| \n model: |$modelInfo| \n OSVersion: |$osVersionInfo|",
+                modifier = Modifier
+                    .clip(
+                        RoundedCornerShape(13.dp)
+                    )
+                    .background(Color(0xFF797979))
+                    .padding(7.dp)
+            )
+
+            Text(
+                currentTime,
                 modifier = Modifier
                     .clip(
                         RoundedCornerShape(13.dp)
