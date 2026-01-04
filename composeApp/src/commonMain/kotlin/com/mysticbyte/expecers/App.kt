@@ -3,6 +3,7 @@ package com.mysticbyte.expecers
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.shape.RoundedCornerShape
@@ -47,6 +48,8 @@ fun App() {
                 Text("Click For A Log Message")
             }
 
+            Spacer(modifier = Modifier.padding(7.dp))
+
             Text(
                 "Platform: |$platformInfo| \n model: |$modelInfo| \n OSVersion: |$osVersionInfo|",
                 modifier = Modifier
@@ -56,6 +59,8 @@ fun App() {
                     .background(Color(0xFF797979))
                     .padding(7.dp)
             )
+
+            Spacer(modifier = Modifier.padding(7.dp))
 
             Text(
                 currentTime,
