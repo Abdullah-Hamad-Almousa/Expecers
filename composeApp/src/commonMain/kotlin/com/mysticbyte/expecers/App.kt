@@ -17,6 +17,7 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.dp
 import com.mysticbyte.expecers.exp.CurrentTime
 import com.mysticbyte.expecers.exp.DeviceInfo
+import com.mysticbyte.expecers.pather.PlatformPather
 
 @Composable
 fun App() {
@@ -26,6 +27,9 @@ fun App() {
     var osVersionInfo = DeviceInfo.osVersion
 
     var currentTime = CurrentTime()
+
+    var cachePathDir = PlatformPather.cacheDir
+    var tempPathDir = PlatformPather.tempDir
 
     Box(
         modifier = Modifier
@@ -64,6 +68,18 @@ fun App() {
 
             Text(
                 currentTime,
+                modifier = Modifier
+                    .clip(
+                        RoundedCornerShape(13.dp)
+                    )
+                    .background(Color(0xFF797979))
+                    .padding(7.dp)
+            )
+
+            Spacer(modifier = Modifier.padding(7.dp))
+
+            Text(
+                "Cache: |$cachePathDir| \n Temp: |$tempPathDir|",
                 modifier = Modifier
                     .clip(
                         RoundedCornerShape(13.dp)
