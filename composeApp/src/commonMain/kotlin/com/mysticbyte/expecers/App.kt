@@ -16,6 +16,8 @@ import androidx.compose.ui.unit.dp
 @Composable
 fun App() {
 
+
+
     Box(
         modifier = Modifier
             .fillMaxSize()
@@ -28,6 +30,14 @@ fun App() {
                 .align(Alignment.Center),
             horizontalAlignment = Alignment.CenterHorizontally
         ) {
+
+            Button(
+                onClick = {
+                    logMessage("KMP", "Log Message")
+                }
+            ){
+                Text("Click For A Log Message")
+            }
 
             Button(
                 onClick = {

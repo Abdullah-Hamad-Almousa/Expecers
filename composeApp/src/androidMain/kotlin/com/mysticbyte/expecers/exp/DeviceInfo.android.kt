@@ -1,10 +1,9 @@
 package com.mysticbyte.expecers.exp
 
+import android.os.Build
+
 actual class DeviceInfo {
-    actual val platform: String
-        get() = TODO("Not yet implemented")
-    actual val model: String
-        get() = TODO("Not yet implemented")
-    actual val osVersion: String
-        get() = TODO("Not yet implemented")
+    actual val platform: String = "Android"
+    actual val model: String = Build.MODEL
+    actual val osVersion: String = Build.VERSION.RELEASE
 }
