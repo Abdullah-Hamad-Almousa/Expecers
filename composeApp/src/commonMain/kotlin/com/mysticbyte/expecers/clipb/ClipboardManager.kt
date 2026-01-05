@@ -6,3 +6,5 @@ expect class ClipboardManager {
     fun getText(): String?
 
 }
+
+expect fun createClipboardManager(): ClipboardManager

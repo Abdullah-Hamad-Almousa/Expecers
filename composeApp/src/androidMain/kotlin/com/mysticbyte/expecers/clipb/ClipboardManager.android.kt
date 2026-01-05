@@ -4,6 +4,8 @@ import android.content.ClipData
 import android.content.ClipboardManager
 import android.content.Context
 
+lateinit var applicationContext: Context
+
 actual class ClipboardManager(private val context: Context) {
 
     private val clipboard = context.getSystemService(Context.CLIPBOARD_SERVICE) as ClipboardManager
@@ -17,3 +19,5 @@ actual class ClipboardManager(private val context: Context) {
         return clipboard.primaryClip?.getItemAt(0)?.text?.toString()
     }
 }
+
+actual fun createClipboardManager() = ClipboardManager(applicationContext)

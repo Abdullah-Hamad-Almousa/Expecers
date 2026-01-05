@@ -13,3 +13,5 @@ actual class ClipboardManager {
         return UIPasteboard.generalPasteboard.string
     }
 }
+
+actual fun createClipboardManager() = ClipboardManager()

@@ -23,3 +23,5 @@ actual class ClipboardManager {
 
     }
 }
+
+actual fun createClipboardManager() = ClipboardManager()
