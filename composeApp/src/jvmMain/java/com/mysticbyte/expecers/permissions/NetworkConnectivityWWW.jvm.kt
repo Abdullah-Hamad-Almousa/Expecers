@@ -1,6 +1,5 @@
 package com.mysticbyte.expecers.permissions
 
-import jdk.jfr.internal.OldObjectSample.emit
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flow

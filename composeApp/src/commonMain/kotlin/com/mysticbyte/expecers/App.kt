@@ -10,6 +10,8 @@ import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.Button
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.collectAsState
+import androidx.compose.runtime.getValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
@@ -21,7 +23,7 @@ import com.mysticbyte.expecers.pather.PlatformPather
 import com.mysticbyte.expecers.permissions.NetworkConnectivityWWW
 
 @Composable
-fun App() {
+fun App(networkConnectivityWWW: NetworkConnectivityWWW) {
 
     var platformInfo = DeviceInfo.platform
     var modelInfo = DeviceInfo.model
@@ -31,6 +33,8 @@ fun App() {
 
     var cachePathDir = PlatformPather.cacheDir
     var tempPathDir = PlatformPather.tempDir
+
+    val isOnline by networkConnectivityWWW.observeConnected().collectAsState(initial = networkConnectivityWWW.isOnline())
 
     Box(
         modifier = Modifier
@@ -87,6 +91,13 @@ fun App() {
                     )
                     .background(Color(0xFF797979))
                     .padding(7.dp)
+            )
+
+            Spacer(modifier = Modifier.padding(7.dp))
+
+            Text(
+                text = if (isOnline) "Status: Online" else "Status: Offline",
+                color = if (isOnline) Color.Green else Color.Red
             )
 
         }
