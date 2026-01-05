@@ -7,6 +7,9 @@ plugins {
     alias(libs.plugins.composeMultiplatform)
     alias(libs.plugins.composeCompiler)
     alias(libs.plugins.composeHotReload)
+
+    // Add libs
+    alias(libs.plugins.kotlin.serialization)
 }
 
 kotlin {
@@ -50,6 +53,7 @@ kotlin {
             // Add libs
             implementation(libs.ktor.client.core)
             implementation(libs.ktor.client.content.negotiation)
+            implementation(libs.ktor.serialization.kotlinx.json)
         }
         commonTest.dependencies {
             implementation(libs.kotlin.test)
@@ -63,7 +67,7 @@ kotlin {
         }
         // Add ios libs
         iosMain.dependencies {
-            implementation(libs.ktor.client.okhttp)
+            implementation(libs.ktor.client.darwin)
         }
     }
 }
