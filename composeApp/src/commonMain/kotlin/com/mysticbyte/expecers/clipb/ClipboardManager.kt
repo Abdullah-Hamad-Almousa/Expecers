@@ -1,6 +1,6 @@
 package com.mysticbyte.expecers.clipb
 
-expect object ClipboardManager {
+expect class ClipboardManager {
 
     fun setText(text: String)
     fun getText(): String?

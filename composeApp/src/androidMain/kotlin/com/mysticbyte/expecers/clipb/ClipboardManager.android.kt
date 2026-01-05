@@ -1,24 +1,19 @@
 package com.mysticbyte.expecers.clipb
 
+import android.content.ClipData
+import android.content.ClipboardManager
 import android.content.Context
 
-import android.content.ClipboardManager
-import android.content.ClipData
+actual class ClipboardManager(private val context: Context) {
 
-private lateinit var appContext: Context
+    private val clipboard = context.getSystemService(Context.CLIPBOARD_SERVICE) as ClipboardManager
 
-fun initClipboard(context: Context){
-
-    appContext = context.applicationContext
-
-}
-
-actual object ClipboardManager {
     actual fun setText(text: String) {
-        checkInitialized()
+        val clip = ClipData.newPlainText("label", text)
+        clipboard.setPrimaryClip(clip)
     }
 
     actual fun getText(): String? {
-        TODO("Not yet implemented")
+        return clipboard.primaryClip?.getItemAt(0)?.text?.toString()
     }
 }

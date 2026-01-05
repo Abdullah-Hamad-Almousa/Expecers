@@ -1,10 +1,15 @@
 package com.mysticbyte.expecers.clipb
 
-actual object ClipboardManager {
+import platform.UIKit.UIPasteboard
+
+actual class ClipboardManager {
     actual fun setText(text: String) {
+
+        UIPasteboard.generalPasteboard.string = text
+
     }
 
     actual fun getText(): String? {
-        TODO("Not yet implemented")
+        return UIPasteboard.generalPasteboard.string
     }
 }
