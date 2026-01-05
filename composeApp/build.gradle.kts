@@ -54,9 +54,14 @@ kotlin {
             implementation(libs.ktor.client.core)
             implementation(libs.ktor.client.content.negotiation)
             implementation(libs.ktor.serialization.kotlinx.json)
+
         }
         commonTest.dependencies {
             implementation(libs.kotlin.test)
+
+            // Add libs
+            implementation(kotlin("test"))
+            implementation("org.jetbrains.kotlinx:kotlinx-coroutines-test:1.10.2")
         }
         jvmMain.dependencies {
             implementation(compose.desktop.currentOs)
@@ -65,10 +70,16 @@ kotlin {
             // Add libs
             implementation(libs.ktor.client.okhttp)
         }
+        jvmTest.dependencies {
+            implementation(libs.kotlin.testJunit)
+        }
         // Add ios libs
         iosMain.dependencies {
             implementation(libs.ktor.client.darwin)
         }
+    }
+    sourceSets.commonMain.dependencies {
+        implementation(kotlin("test"))
     }
 }
 
