@@ -7,9 +7,6 @@ plugins {
     alias(libs.plugins.composeMultiplatform)
     alias(libs.plugins.composeCompiler)
     alias(libs.plugins.composeHotReload)
-
-    // Add libs
-    alias(libs.plugins.kotlin.serialization)
 }
 
 kotlin {
@@ -35,10 +32,6 @@ kotlin {
         androidMain.dependencies {
             implementation(compose.preview)
             implementation(libs.androidx.activity.compose)
-
-            // Add libs
-            implementation(libs.ktor.client.okhttp)
-            implementation(libs.ktor.client.core)
         }
         commonMain.dependencies {
             implementation(compose.runtime)
@@ -50,36 +43,14 @@ kotlin {
             implementation(libs.androidx.lifecycle.viewmodelCompose)
             implementation(libs.androidx.lifecycle.runtimeCompose)
 
-            // Add libs
-            implementation(libs.ktor.client.core)
-            implementation(libs.ktor.client.content.negotiation)
-            implementation(libs.ktor.serialization.kotlinx.json)
-
         }
         commonTest.dependencies {
             implementation(libs.kotlin.test)
-
-            // Add libs
-            implementation(kotlin("test"))
-            implementation("org.jetbrains.kotlinx:kotlinx-coroutines-test:1.10.2")
         }
         jvmMain.dependencies {
             implementation(compose.desktop.currentOs)
             implementation(libs.kotlinx.coroutinesSwing)
-
-            // Add libs
-            implementation(libs.ktor.client.okhttp)
         }
-        jvmTest.dependencies {
-            implementation(libs.kotlin.testJunit)
-        }
-        // Add ios libs
-        iosMain.dependencies {
-            implementation(libs.ktor.client.darwin)
-        }
-    }
-    sourceSets.commonMain.dependencies {
-        implementation(kotlin("test"))
     }
 }
 
